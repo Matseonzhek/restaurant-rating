@@ -5,7 +5,9 @@ import java.time.LocalTime;
 
 public class VoteBoard extends AbstractBaseEntity {
 
-    private Restaurant restaurant;
+    private String restaurantName;
+    private String dishName;
+    private Long dishPrice;
     private LocalDate dateOfVote;
     private LocalTime timeOfVote;
     private boolean vote = false;
@@ -14,20 +16,38 @@ public class VoteBoard extends AbstractBaseEntity {
     public VoteBoard() {
     }
 
-    public VoteBoard(Restaurant restaurant, LocalDate dateOfVote, LocalTime timeOfVote, boolean vote, User user) {
-        this.restaurant = restaurant;
+    public VoteBoard(String restaurantName, String dishName, Long dishPrice,
+                     LocalDate dateOfVote, LocalTime timeOfVote, boolean vote) {
+        this.restaurantName = restaurantName;
+        this.dishName = dishName;
+        this.dishPrice = dishPrice;
         this.dateOfVote = dateOfVote;
         this.timeOfVote = timeOfVote;
         this.vote = vote;
-        this.user = user;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getDishName() {
+        return dishName;
+    }
+
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
+    }
+
+    public Long getDishPrice() {
+        return dishPrice;
+    }
+
+    public void setDishPrice(Long dishPrice) {
+        this.dishPrice = dishPrice;
     }
 
     public LocalDate getDateOfVote() {
@@ -66,7 +86,9 @@ public class VoteBoard extends AbstractBaseEntity {
     public String toString() {
         return "VoteBoard{" +
                 "id=" + id +
-                ", restaurant=" + restaurant +
+                ", restaurantName='" + restaurantName + '\'' +
+                ", dishName='" + dishName + '\'' +
+                ", dishPrice=" + dishPrice +
                 ", dateOfVote=" + dateOfVote +
                 ", timeOfVote=" + timeOfVote +
                 ", vote=" + vote +

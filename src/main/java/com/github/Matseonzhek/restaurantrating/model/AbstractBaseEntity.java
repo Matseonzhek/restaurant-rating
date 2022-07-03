@@ -1,5 +1,6 @@
 package com.github.Matseonzhek.restaurantrating.model;
 
+
 public abstract class AbstractBaseEntity {
     public static final int START_SEQ = 10000;
 
