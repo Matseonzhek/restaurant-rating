@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="restaurant-rating" uuid="8171041e-382c-47df-afee-519bcf310069">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem:restaurant-rating</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
