@@ -1,9 +1,16 @@
 package com.github.Matseonzhek.restaurantrating.model;
 
 
-public abstract class AbstractBaseEntity {
-    public static final int START_SEQ = 10000;
+import javax.persistence.*;
 
+@MappedSuperclass
+@Access(AccessType.FIELD)
+public abstract class AbstractBaseEntity {
+    public static final int START_SEQ = 100000;
+
+    @Id
+    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
     protected Integer id;
 
     protected AbstractBaseEntity() {

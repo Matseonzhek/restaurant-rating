@@ -1,7 +1,16 @@
 package com.github.Matseonzhek.restaurantrating.model;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotEmpty;
+
+@MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 
+    @Column(name = "name", nullable = false)
+    @NotEmpty
     protected String name;
 
     protected AbstractNamedEntity() {
@@ -22,6 +31,6 @@ public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 
     @Override
     public String toString() {
-        return super.toString() + "(" +  name + ')';
+        return super.toString() + "(" + name + ')';
     }
 }

@@ -1,16 +1,37 @@
 package com.github.Matseonzhek.restaurantrating.model;
 
-import javax.persistence.Entity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-
+@Entity
+@Table(name = "USERS" )
 public class User extends AbstractNamedEntity {
 
+    @Column(name = "email", nullable = false)
+    @Email
+    @NotNull
     private String email;
-    private String password;
-    private Set<Role> roles;
 
-    private boolean vote;
+    @Column(name = "password", nullable = false)
+    @NotEmpty
+    @Length(min = 5)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"})})
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Role> roles;
 
     public User(Integer id, String name, String email, String password, Set<Role> roles) {
         super(id, name);
@@ -22,13 +43,6 @@ public class User extends AbstractNamedEntity {
     public User() {
     }
 
-    public boolean isVote() {
-        return vote;
-    }
-
-    public void setVote(boolean vote) {
-        this.vote = vote;
-    }
 
     public String getEmail() {
         return email;

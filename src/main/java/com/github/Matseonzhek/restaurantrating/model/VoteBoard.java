@@ -1,28 +1,48 @@
 package com.github.Matseonzhek.restaurantrating.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "VOTE_BOARD")
 public class VoteBoard extends AbstractBaseEntity {
 
+    @Column(name = "restaurant", nullable = false)
+    @NotNull
     private String restaurantName;
+    @Column(name = "dish", nullable = false)
+    @NotNull
     private String dishName;
+    @Column(name = "dish_price", nullable = false)
+    @NotNull
     private Long dishPrice;
-    private LocalDate dateOfVote;
-    private LocalTime timeOfVote;
+    @Column(name = "date_time", nullable = false)
+    @NotNull
+    private LocalDateTime dateTimeOfVote;
+
+    @Column(name = "vote", nullable = false)
+    @NotNull
     private boolean vote = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     private User user;
 
     public VoteBoard() {
     }
 
     public VoteBoard(String restaurantName, String dishName, Long dishPrice,
-                     LocalDate dateOfVote, LocalTime timeOfVote, boolean vote) {
+                     LocalDateTime dateTimeOfVote, boolean vote) {
         this.restaurantName = restaurantName;
         this.dishName = dishName;
         this.dishPrice = dishPrice;
-        this.dateOfVote = dateOfVote;
-        this.timeOfVote = timeOfVote;
+        this.dateTimeOfVote = dateTimeOfVote;
         this.vote = vote;
     }
 
@@ -50,20 +70,12 @@ public class VoteBoard extends AbstractBaseEntity {
         this.dishPrice = dishPrice;
     }
 
-    public LocalDate getDateOfVote() {
-        return dateOfVote;
+    public LocalDateTime getDateTimeOfVote() {
+        return dateTimeOfVote;
     }
 
-    public void setDateOfVote(LocalDate dateOfVote) {
-        this.dateOfVote = dateOfVote;
-    }
-
-    public LocalTime getTimeOfVote() {
-        return timeOfVote;
-    }
-
-    public void setTimeOfVote(LocalTime timeOfVote) {
-        this.timeOfVote = timeOfVote;
+    public void setDateTimeOfVote(LocalDateTime dateOfVote) {
+        this.dateTimeOfVote = dateOfVote;
     }
 
     public boolean isVote() {
@@ -89,8 +101,7 @@ public class VoteBoard extends AbstractBaseEntity {
                 ", restaurantName='" + restaurantName + '\'' +
                 ", dishName='" + dishName + '\'' +
                 ", dishPrice=" + dishPrice +
-                ", dateOfVote=" + dateOfVote +
-                ", timeOfVote=" + timeOfVote +
+                ", date and time of vote=" + dateTimeOfVote +
                 ", vote=" + vote +
                 ", user=" + user +
                 '}';
