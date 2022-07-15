@@ -20,21 +20,21 @@ public  class VoteController {
         this.voteBoardRepository = voteBoardRepository;
     }
 
-    public void delete(int id) {
-        voteBoardRepository.delete(id, USER);
-    }
+//    public void delete(int id) {
+//        voteBoardRepository.delete(id, USER);
+//    }
 
     public void update(VoteBoard voteBoard, int voteId) {
         if (voteBoard.getId() == voteId) {
-            voteBoardRepository.save(voteBoard, USER);
+//            voteBoardRepository.save(voteBoard, USER);
         } else throw new IllegalArgumentException(voteBoard + "must be with id = " + voteId);
     }
 
-    public VoteBoard create(VoteBoard voteBoard) {
-        return voteBoardRepository.save(voteBoard, USER);
-    }
+//    public VoteBoard create(VoteBoard voteBoard) {
+//        return voteBoardRepository.save(voteBoard, USER);
+//    }
 
-    public List<VoteBoard> getAll() {
-        return voteBoardRepository.getAll();
-    }
+//    public List<VoteBoard> getAll() {
+//        return voteBoardRepository.getAll();
+//    }
 }

@@ -2,30 +2,33 @@ package com.github.Matseonzhek.restaurantrating.repository;
 
 
 import com.github.Matseonzhek.restaurantrating.model.User;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class DataJpaUserRepository implements UserRepository{
+public class DataJpaUserRepository {
 
-    @Override
+    private final UserRepository userRepository;
+
+    public DataJpaUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public User save(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
-    @Override
     public boolean delete(int id) {
-        return false;
+        return userRepository.delete(id) != 0;
     }
 
-    @Override
     public User get(int id) {
-        return null;
+        return userRepository.getById(id);
     }
 
-    @Override
     public List<User> getAll() {
-        return null;
+        return userRepository.findAll(Sort.by("email"));
     }
 }

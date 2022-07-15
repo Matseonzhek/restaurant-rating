@@ -1,34 +1,32 @@
 package com.github.Matseonzhek.restaurantrating.repository;
 
 import com.github.Matseonzhek.restaurantrating.model.VoteBoard;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public class DataJpaVoteBoardRepository implements VoteBoardRepository {
+public class DataJpaVoteBoardRepository {
 
-    public DataJpaVoteBoardRepository() {    }
+    private final VoteBoardRepository voteBoardRepository;
+    private final UserRepository userRepository;
 
-    @Override
-    public VoteBoard save(VoteBoard voteBoard, int userId) {
-        return null;
+    public DataJpaVoteBoardRepository(VoteBoardRepository voteBoardRepository, UserRepository userRepository) {
+        this.voteBoardRepository = voteBoardRepository;
+        this.userRepository = userRepository;
     }
 
-    @Override
-    public boolean delete(int id, int userId) {
-        return false;
+    public boolean delete(int id) {
+        return voteBoardRepository.delete(id) != 0;
     }
 
-    @Override
-    public List<VoteBoard> getAll() {
-        return null;
+    @Transactional
+    public VoteBoard save(VoteBoard newVoteRecord) {
+        return voteBoardRepository.save(newVoteRecord);
     }
 
-    @Override
-    public VoteBoard update(VoteBoard voteBoard, int userId) {
-        return null;
-    }
-
+    public List<VoteBoard> getAll (){ return voteBoardRepository.findAll(Sort.by("dateTimeOfVote"));}
 
 }

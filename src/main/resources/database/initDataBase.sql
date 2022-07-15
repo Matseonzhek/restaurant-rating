@@ -25,9 +25,9 @@ CREATE TABLE vote_board
     dish            VARCHAR(255)                    NOT NULL,
     dish_price      NUMERIC                         NOT NULL,
     date_time       TIMESTAMP  DEFAULT now()        NOT NULL,
-    vote            BOOLEAN                         NOT NULL,
-    user_id         INTEGER                         NOT NULL ,
+    vote            BOOLEAN                         NULL,
+    user_id         INTEGER                         NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-      /*  CONSTRAINT user_vote_unique UNIQUE (user_id,vote)*/
+--       CONSTRAINT user_vote_unique UNIQUE (restaurant, user_id,vote)
 );
 
