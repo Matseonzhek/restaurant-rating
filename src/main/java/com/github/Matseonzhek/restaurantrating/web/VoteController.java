@@ -1,9 +1,11 @@
 package com.github.Matseonzhek.restaurantrating.web;
 
 import com.github.Matseonzhek.restaurantrating.model.VoteBoard;
-import com.github.Matseonzhek.restaurantrating.repository.VoteBoardRepository;
+import com.github.Matseonzhek.restaurantrating.repository.DataJpaVoteBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -13,12 +15,12 @@ public  class VoteController {
     private final int USER = 10001;
 
     @Autowired
-    private final VoteBoardRepository voteBoardRepository;
+    private final DataJpaVoteBoardRepository dataJpaVoteBoardRepository;
 
-
-    public VoteController(VoteBoardRepository voteBoardRepository) {
-        this.voteBoardRepository = voteBoardRepository;
+    public VoteController(DataJpaVoteBoardRepository dataJpaVoteBoardRepository) {
+        this.dataJpaVoteBoardRepository = dataJpaVoteBoardRepository;
     }
+
 
 //    public void delete(int id) {
 //        voteBoardRepository.delete(id, USER);
@@ -34,7 +36,8 @@ public  class VoteController {
 //        return voteBoardRepository.save(voteBoard, USER);
 //    }
 
-//    public List<VoteBoard> getAll() {
-//        return voteBoardRepository.getAll();
-//    }
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public List<VoteBoard> getAll() {
+        return dataJpaVoteBoardRepository.getAll();
+    }
 }
