@@ -9,4 +9,10 @@
 
     <mvc:annotation-driven/>
 
+    <bean class="com.github.Matseonzhek.restaurantrating.config.SwaggerConfig"/>
+
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+
 </beans>

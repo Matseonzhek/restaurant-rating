@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>restaurant-rating</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <version>1.0-SNAPSHOT</version>
 
@@ -89,6 +89,21 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--SWAGGER-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- Swagger WebJar -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>4.11.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -113,8 +128,8 @@
                     <version>2.22.1</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>3.3.2</version>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
