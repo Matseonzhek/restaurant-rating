@@ -1,5 +1,6 @@
 package com.github.Matseonzhek.restaurantrating.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -29,6 +30,7 @@ public class VoteBoard extends AbstractBaseEntity {
     private boolean vote = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
