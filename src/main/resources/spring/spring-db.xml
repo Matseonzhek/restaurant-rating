@@ -14,6 +14,7 @@
     <jpa:repositories base-package="com.github.Matseonzhek.restaurantrating.repository"/>
 
     <!--Initializing and populating database-->
+    <!-- TODO make data base initialization not manual -->
     <jdbc:initialize-database data-source="dataSource" enabled="true">
         <jdbc:script location="classpath:database/initDataBase.sql"/>
         <jdbc:script encoding="utf-8" location="classpath:database/populateDataBase.sql"/>

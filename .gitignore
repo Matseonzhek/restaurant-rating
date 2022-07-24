@@ -1,3 +1,5 @@
+/lib
+/target
 /lib/aopalliance-1.0.jar
 /lib/commons-logging-1.2.jar
 /target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
@@ -84,3 +86,13 @@
 /target/restaurant-rating-1.0-SNAPSHOT/WEB-INF/classes/com/github/Matseonzhek/restaurantrating/repository/VoteBoardRepository.class
 /target/classes/com/github/Matseonzhek/restaurantrating/web/VoteController.class
 /target/restaurant-rating-1.0-SNAPSHOT/WEB-INF/classes/com/github/Matseonzhek/restaurantrating/web/VoteController.class
+/target/restaurant-rating-1.0/WEB-INF/classes/database/initDataBase.sql
+/target/restaurant-rating-1.0/WEB-INF/classes/tomcat/context.xml
+/target/restaurant-rating-1.0/WEB-INF/classes/database/hsqldb.properties
+/target/restaurant-rating-1.0/META-INF/MANIFEST.MF
+/target/restaurant-rating-1.0/WEB-INF/classes/database/populateDataBase.sql
+/target/restaurant-rating-1.0.war
+/target/restaurant-rating-1.0/WEB-INF/classes/spring/spring-app.xml
+/target/restaurant-rating-1.0/WEB-INF/classes/spring/spring-db.xml
+/target/restaurant-rating-1.0/WEB-INF/classes/spring/spring-mvc.xml
+/target/restaurant-rating-1.0/WEB-INF/web.xml
